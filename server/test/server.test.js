@@ -6,6 +6,8 @@ const {app} = require('./../server');
 // const {Todo} = require('./../models/todo');
 // const {User} = require('./../models/user');
 // const {todos , populateTodos, users , populateUsers} = require('./seed/seed');
+const {Player} = require('./../models/player');
+
 //
 // //dummy object for test
 // beforeEach(populateUsers);
@@ -310,5 +312,33 @@ const {app} = require('./../server');
 //
 //     });
 // });
+
+const player = [{
+    _id:new ObjectID(),
+    name: 'Abhinish',
+},{
+    _id:new ObjectID(),
+    name: 'Abhinish2',
+    score:10
+}];
+
+beforeEach((done) => {
+    Player.remove({}).then(() => {
+        return Player.insertMany(player);
+    }).then(() => done());
+});
+
+describe('GET /leaderboard',() => {
+    it('Should get all player', (done) => {
+        request(app)
+            .get('/leaderboard')
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.player.length).toBe(2);
+            })
+            .end(done);
+    })
+});
+
 
 

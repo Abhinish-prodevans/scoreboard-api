@@ -1,4 +1,4 @@
-require('./config/config');
+var {port,ip} = require('./config/openshift-config');
 
 var {ObjectID} = require('mongodb');
 var express = require('express');
@@ -8,11 +8,10 @@ const _ = require('lodash');
 
 
 
-var {mongoose} = require('./db/mongoose');
+var {mongoose} = require('./db/openshift-mongoose');
 var {Player} = require('./models/player');
 
 var app = express();
-const port = process.env.PORT;
 
 app.use(bodyParser.json());
 //
@@ -537,8 +536,7 @@ app.get('/setScore/:id/:score',(req,res) => {
 
 
 
-app.listen(port, () =>
-   console.log(`Started on the port ${port}`)
-);
+app.listen(port, ip);
+console.log('Server running on http://%s:%s', ip, port);
 
 module.exports = {app};
