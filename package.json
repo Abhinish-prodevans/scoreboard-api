@@ -22,6 +22,8 @@
   },
   "homepage": "https://gitlab.com/Abhinish-prodevans/DatabaseModules#README",
   "dependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
     "crypto-js": "^3.1.6",
