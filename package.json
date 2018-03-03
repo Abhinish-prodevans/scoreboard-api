@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server.js",
     "test": "IP=0.0.0.0 PORT=3030 mocha --timeout 5000 test/*.test.js",
     "test-watch": "nodemon --exec \"npm test\""
   },
