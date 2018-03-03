@@ -534,6 +534,15 @@ app.get('/setScore/:id/:score',(req,res) => {
 });
 
 
+//home path of the app
+
+app.get('/',(req,res) => {
+
+
+    res.header('Access-Control-Allow-Origin','http://localhost:63342').send();
+
+});
+
 
 
 app.listen(port, ip);

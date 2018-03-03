@@ -18,7 +18,7 @@
   "message": "The following service(s) have been created in your project: ${NAME}, ${DATABASE_SERVICE_NAME}.\n\nFor more information about using this template, including OpenShift considerations, see https://github.com/openshift/nodejs-ex/blob/master/README.md.",
   "labels": {
       "template": "nodejs-mongodb-example",
-      "app": "nodejs-mongodb-example"
+      "app": "nodejs-mongodb-example-1"
   },
   "objects": [
     {
@@ -451,12 +451,13 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "https://github.com/openshift/nodejs-ex.git"
+      "value": "http://Abhinish-Raj:Nishuraj_13@35.200.149.204/openshift-demo/api.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
       "displayName": "Git Reference",
-      "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default branch."
+      "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default branch.",
+      "value" : "test"
     },
     {
       "name": "CONTEXT_DIR",
