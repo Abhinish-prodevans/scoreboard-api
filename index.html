@@ -57,6 +57,7 @@
 
 
 
+
             setInterval(
     function load() {
         var obj, dbParam, myObj, x, txt = " "
@@ -83,7 +84,7 @@
                 document.getElementById("demo").innerHTML = txt;
             }
         };
-        xhttp.open("GET", "http://0.0.0.0:8080/leaderboard", true);
+        xhttp.open("GET", "http://http://scoreboard-api-myproject.192.168.64.5.nip.io//leaderboard", true);
         xhttp.send();
 
     }, 500);}
