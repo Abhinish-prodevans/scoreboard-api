@@ -1,6 +1,7 @@
-var {port,ip} = require('./config/openshift-config');
+var port = require('./config/openshift-config').port,
+    ip = require('./config/openshift-config').ip;
 
-var {ObjectID} = require('mongodb');
+var ObjectID = require('mongodb').ObjectID;
 var express = require('express');
 var bodyParser = require('body-parser');
 const _ = require('lodash');
@@ -9,8 +10,8 @@ var path = require('path');
 
 
 
-var {mongoose} = require('./db/openshift-mongoose');
-var {Player} = require('./models/player');
+var mongoose = require('./db/openshift-mongoose').mongoose;
+var Player = require('./models/player').Player;
 
 var app = express();
 
