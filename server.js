@@ -471,20 +471,20 @@ app.get('/player/:name',(req,res) => {
 
 //this is used for updating the score by 1
 
-app.patch('/addOne/:id',(req,res) => {
-    var id = req.params.id;
-
-    Player.findOneAndUpdate(id,{$inc: { "score" : 1 }},{new:false}).then((player) => {
-        if(!player){
-            return res.status(404).send("player is empty");
-        }
-
-        res.send({player});
-    }).catch((e) => {
-        res.status(400).send(e);
-    })
-
-});
+// app.patch('/addOne/:id',(req,res) => {
+//     var id = req.params.id;
+//
+//     Player.findOneAndUpdate(id,{$inc: { "score" : 1 }},{new:false}).then((player) => {
+//         if(!player){
+//             return res.status(404).send("player is empty");
+//         }
+//
+//         res.send({player});
+//     }).catch((e) => {
+//         res.status(400).send(e);
+//     })
+//
+// });
 
 //this is used for updating the score by 5
 
