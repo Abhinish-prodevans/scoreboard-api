@@ -4,6 +4,7 @@ var {ObjectID} = require('mongodb');
 var express = require('express');
 var bodyParser = require('body-parser');
 const _ = require('lodash');
+var path = require('path');
 
 
 
@@ -12,6 +13,9 @@ var {mongoose} = require('./db/openshift-mongoose');
 var {Player} = require('./models/player');
 
 var app = express();
+
+app.use(express.static(__dirname + '/public'));
+
 
 app.use(bodyParser.json());
 //
@@ -418,6 +422,22 @@ app.post('/player',(req,res) => {
     })
 });
 
+app.get('/player/:name',(req,res) => {
+    var name = req.params.name;
+    var player = new Player();
+    player.name = name;
+    player.save().then(() => {
+        res.header('Access-Control-Allow-Origin','http://localhost:63342').send(player.id);
+        // if(!player){
+        //     res.status(404).send();
+        // }else {
+        //     res.send(player);
+        // }
+    }).catch((e) => {
+        res.status(400).send(e);
+    })
+});
+
 // app.patch('/todos/:id',(req,res)=>{
 //    var id = req.param.id;
 //    var body = _.pick(req.body, ['text', 'completed']);
@@ -451,7 +471,7 @@ app.post('/player',(req,res) => {
 //this is used for updating the score by 1
 
 app.patch('/addOne/:id',(req,res) => {
-    var id = req.param.id;
+    var id = req.params.id;
 
     Player.findOneAndUpdate(id,{$inc: { "score" : 1 }},{new:false}).then((player) => {
         if(!player){
@@ -518,15 +538,15 @@ app.patch('/addTwenty/:id',(req,res) => {
 
 //set score for the player
 app.get('/setScore/:id/:score',(req,res) => {
-    var id = req.param.id;
-    var score1 = req.param('score');
-
-    Player.findOneAndUpdate(id,{$set: {score: score1}},{new:false}).then((player) => {
+    var id = req.params.id;
+    var score1 = req.params.score;
+    //console.log(id);
+    Player.findByIdAndUpdate(id,{$set: {score: score1}},{new:false}).then((player) => {
         if(!player){
             return res.status(404).send("player is empty");
         }
 
-        res.header('Access-Control-Allow-Origin','http://localhost:63342').send();
+        res.header('Access-Control-Allow-Origin','http://localhost:63342').send(player);
     }).catch((e) => {
         res.status(400).send(e);
     })
@@ -536,11 +556,15 @@ app.get('/setScore/:id/:score',(req,res) => {
 
 //home path of the app
 
-app.get('/',(req,res) => {
+// app.get('/',(req,res) => {
+//
+//
+//     res.header('Access-Control-Allow-Origin','http://localhost:63342').send();
+//
+// });
 
-
-    res.header('Access-Control-Allow-Origin','http://localhost:63342').send();
-
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 
