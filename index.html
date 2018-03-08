@@ -61,9 +61,11 @@
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 myObj = JSON.parse(this.responseText);
-                console.log(this.responseText);
-                console.log(myObj);
-                console.log(myObj.player.length);
+                bubble_Sort(myObj.player)
+
+                // console.log(this.responseText);
+                // console.log(myObj);
+                // console.log(myObj.player.length);
                 var i = 0;
                 txt += "<table border='1'> <thead><tr>" +
                     "<th>First Name</th>" +
@@ -81,6 +83,28 @@
         xhttp.open("GET", "http://localhost:8080/leaderboard", true);
         xhttp.send();
 
-    }, 3000);}
+    }, 500);}
+
+    function bubble_Sort(a)
+    {
+        var swapp;
+        var n = a.length-1;
+        var x=a;
+        do {
+            swapp = false;
+            for (var i=0; i < n; i++)
+            {
+                if (x[i].score < x[i+1].score)
+                {
+                    var temp = x[i];
+                    x[i] = x[i+1];
+                    x[i+1] = temp;
+                    swapp = true;
+                }
+            }
+            n--;
+        } while (swapp);
+        return x;
+    }
 </script>
 </html>

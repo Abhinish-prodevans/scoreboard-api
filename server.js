@@ -326,7 +326,7 @@ app.use(bodyParser.json());
 
 app.get('/leaderboard',(req,res) => {
     Player.find().then((player) => {
-        res.header('Access-Control-Allow-Origin','http://localhost:63342').send({player})
+        res.header('Access-Control-Allow-Origin','*').send({player})
     },(e) => {
         res.status(400).send(e);
     });
