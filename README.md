@@ -21,3 +21,5 @@ This request is used to create the user in the database,In this call the user ne
 
 GET /addOne , /addTwo, /addTen ,/addTwenty
 This request is used to update the Score of the user by the respectively amount(1,2,10,20)
+
+this is the nice app to learn about api
