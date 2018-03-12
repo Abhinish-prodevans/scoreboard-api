@@ -1,3 +1,4 @@
+Read this for more infomation of the app
 ScoreBoard APIs:
 This application is based on the Node.js, it uses the express framework for APIs. In this app the user can create user , manipulate user detail , and get all the user detail simultaneously. As Node.js can handle the Multiple request at same time.It can act as bridge between the database.It can also provide Authentication module as a Middleware which allow all the processing in the backend which improve the user experience.
 
@@ -25,3 +26,4 @@ This request is used to update the Score of the user by the respectively amount(
 this is the nice app to learn about api ,Nice to have this 
 
 Created by Abhinish Raj
+
