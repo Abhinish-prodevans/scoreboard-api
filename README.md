@@ -23,3 +23,5 @@ GET /addOne , /addTwo, /addTen ,/addTwenty
 This request is used to update the Score of the user by the respectively amount(1,2,10,20)
 
 this is the nice app to learn about api ,Nice to have this 
+
+Created by Abhinish Raj
